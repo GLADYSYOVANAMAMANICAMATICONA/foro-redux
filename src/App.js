@@ -36,13 +36,16 @@ function Stats(props) {
   )
 }
 
-const ForoApp =({foro}) => {
+const ForoApp = ({ foro }) => {
   const onSubmit = (e) => {
-		e.preventDefault();
-		console.log ( 'this..', this);//con truco, es el connect el this.
-		addComent(this.comentInput.value)
+    e.preventDefault();
+    console.log('this..', this);//con truco, es el connect el this.
+    addComent(this.comentInput.value)
   }
-  const foroComponet
+  const foroComponet = foro.map((foro, index)=>{
+  return <Foro
+          />
+  })
 }
 
 export default ForoApp;

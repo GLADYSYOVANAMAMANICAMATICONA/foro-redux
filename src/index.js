@@ -13,5 +13,5 @@ const Index = () => (
 );
 // provider es una etiqueta que permite inyectar los datos de store al componente APP 
 // la etiqueta provider es el padre de app por eso puede inyectar
-ReactDOM.render(<ForoApp />, document.getElementById('root'));
+ReactDOM.render(<Index />, document.getElementById('root'));
 registerServiceWorker();

@@ -7,28 +7,23 @@ const Foro = ({ name, coment, removeComent }) => {
   return (
     <div>
       <div className="foro">
-        <a className="remove-coment"
+        <button className="remove-coment"
           onClick={removeComent}>
           Remove
-      </a>
-        {name}
-      </div>
-      <div className="foro-coment">
-        <div className="counter">
-          <div className="counter-score"> {coment} </div>
-        </div>
+      </button>
+        <div>{name}</div>
+        <div>{coment}</div>
       </div>
     </div>
   );
 }
 
-function Stats(props) {
-  var totalComent = props.foro.length;
+const Stats = ({foro})=> {
+  var totalComent = foro.length;
   return (
     <table className="stats">
       <tbody>
         <tr>
-          <td>Coment:</td>
           <td>{totalComent}</td>
         </tr>
       </tbody>
@@ -39,13 +34,37 @@ function Stats(props) {
 const ForoApp = ({ foro }) => {
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('this..', this);//con truco, es el connect el this.
-    addComent(this.comentInput.value)
+    addComent(this.nameInput.value,this.comentInput.value)
+    this.nameInput.value = '';
+    this.comentImput.value = '';
   }
-  const foroComponet = foro.map((foro, index)=>{
-  return <Foro
-          />
+  const foroComponet = foro.map((foro, index) => {
+    return <Foro
+      key={index}
+      name={foro.name}
+      score={foro.coment}
+    />
   })
+  return (
+    <div className="foro" >
+      <Stats foro={foro} />
+      <h1>FORO</h1>
+      <div>
+        {foroComponet}
+      </div>
+      <form onSubmit={onSubmit}>
+        <input placeholder="Name" type="text" ref={(e) => this.nameInput = e} />
+        <input placeholder="Coment" type="text" ref={(e) => this.comentImput = e} />
+
+        <input type="submit" value="Add Player" />
+      </form>
+    </div>
+
+
+
+  )
 }
 
-export default ForoApp;
+const mapToProps = ({foro}) => ({foro});
+
+export default connect(mapToProps)(ForoApp);

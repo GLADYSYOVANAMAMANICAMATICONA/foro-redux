@@ -15,9 +15,10 @@ export const addComent= (name,coment)=>{
     
 }
 export const removeComent = (index) => {
-	const coment =  store.getState().coment.filter( (item, idx) => idx !== index );
+    const coment =  store.getState().foro.filter( (item, idx) => idx !== index );
+    // filter solo con array
 	store.setState({
-		coment: coment
+		foro: coment
 	})
 }
 

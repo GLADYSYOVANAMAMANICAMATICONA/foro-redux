@@ -10,9 +10,10 @@ export const addComent= (name,coment)=>{
 
 	store.setState({
 		foro: addComent
-	})
+    })
+    console.log(addComent)
+    
 }
-
 export const removeComent = (index) => {
 	const coment =  store.getState().coment.filter( (item, idx) => idx !== index );
 	store.setState({

@@ -34,15 +34,16 @@ const Stats = ({foro})=> {
 const ForoApp = ({ foro }) => {
   const onSubmit = (e) => {
     e.preventDefault();
-    addComent(this.nameInput.value,this.comentImput.value);
+    addComent(this.nameInput.value,this.comentInput.value);
     this.nameInput.value = '';
-    this.comentImput.value = '';
+    this.comentInput.value = '';
   }
   const foroComponet = foro.map((foro, index) => {
     return <Foro
       key={index}
       name={foro.name}
-      score={foro.coment}
+      coment={foro.coment}
+      removeComent = {()=>removeComent(index)}
     />
   })
   return (
@@ -54,7 +55,7 @@ const ForoApp = ({ foro }) => {
       </div>
       <form onSubmit={onSubmit}>
         <input placeholder="Name" type="text" ref={(e) => this.nameInput = e} />
-        <input placeholder="Coment" type="text" ref={(e) => this.comentImput = e} />
+        <input placeholder="Coment" type="text" ref={(e) => this.comentInput = e} />
 
         <input type="submit" value="Add Player" />
       </form>

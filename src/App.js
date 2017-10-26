@@ -34,7 +34,7 @@ const Stats = ({foro})=> {
 const ForoApp = ({ foro }) => {
   const onSubmit = (e) => {
     e.preventDefault();
-    addComent(this.nameInput.value,this.comentInput.value)
+    addComent(this.nameInput.value,this.comentImput.value);
     this.nameInput.value = '';
     this.comentImput.value = '';
   }
